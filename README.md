@@ -9,19 +9,20 @@ To run the experiment, from the command line in this directory:
 To change the experimental parameters:
 
 	In line 49 of WM-IMGEP.py:
-	#RolloutGenerator Params: 
-	# (mdir: model directory, device, 
-	time_limit: number of samples in goal space before exploration, integer value e.g. 100
-	#number_goals: number of goals to set over lifetime of agent, integer value e.g 200
-	#Forward_model: 'M' = World Model, 'D' = Linear layers(do not use),
-	#hiddengoals: True = Goals set in World Model, False = goals as observations(basically IMGEPs)
-	#curiosityreward = True/False - not relevant in this implementation,
-	#static: True = static VAE and HiddenVAE, False = constantly evolving VAE and HiddenVAE
+	RolloutGenerator Params: 
+	- mdir: model directory, device, 
+	- time_limit: number of samples in goal space before exploration, integer value e.g. 100
+	- number_goals: number of goals to set over lifetime of agent, integer value e.g 200
+	- Forward_model: 'M' = World Model, 'D' = Linear layers(do not use),
+	- hiddengoals: True = Goals set in World Model, False = goals as observations(basically IMGEPs)
+	- curiosityreward = True/False - not relevant in this implementation,
+	- static: True = static VAE and HiddenVAE, False = constantly evolving VAE and HiddenVAE
 
 
 	generator = RolloutGenerator(args.logdir, device, time_limit , number_goals,Forward_model,hiddengoals,curiosityreward,static)
 
 To watch the agent explore, in WM-IMGEP.py:
+
 	generator.rollout(None,render = True) 
 
 Data generation:
@@ -60,6 +61,7 @@ MD-RNN (VAE must be trained):
 
 HIddenVAE(MD-RNN and VAE must be trained):
 	python trainvae.py --epochs 1000 --logdir D:\steps1000
-		-Line 60 and 62 must be modified to be:
-		-x\datasets\mgw (x is logdir)
+	
+	-Line 60 and 62 must be modified to be:
+	-x\datasets\mgw (x is logdir)
 	
